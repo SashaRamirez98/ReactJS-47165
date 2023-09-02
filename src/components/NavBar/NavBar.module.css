@@ -2,4 +2,9 @@
     width: 150px;
     border-radius: 50%;
     margin: 5%;
+    cursor: pointer;
 }
+
+.logo:hover {
+    filter: drop-shadow(0 0 0.5em white);
+  }
