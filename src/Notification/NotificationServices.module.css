@@ -1,0 +1,10 @@
+.notification {
+    position: absolute;
+    top: 100;
+    right: 30;
+    color: 'white';
+    padding: '10px 20px 10px 20px';
+    font-size: 20;
+    border-radius: 10;
+    background-color: rgba(255, 255, 255, 0.178);
+}

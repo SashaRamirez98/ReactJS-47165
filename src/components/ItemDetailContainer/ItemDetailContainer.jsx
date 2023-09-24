@@ -29,13 +29,6 @@ const ItemDetailContainer = () => {
             setLoading(false)
         })
 
-        // getProductById(productId)
-        // .then(res => { 
-        //     setProduct(res)
-        // })
-        // .catch(error => {
-        //     console.error(error)
-        // })
     }, [productId])
 
     if (loading){

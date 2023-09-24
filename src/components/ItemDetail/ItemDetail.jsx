@@ -66,20 +66,19 @@ const ItemDetail = ({ id, name, category, img, price, stock, description }) => {
     return(
         <div>
             <article>
-                <button onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')}>Cambiar contador</button>
                 <header><h2>{name}</h2></header>
-                <picture><img src={img} alt={name} style={{ width: 100}}/></picture>
-                <section>
-                    <p>Categoria: {category}</p>
+                <picture><img src={img} alt={name} style={{ width: 400}}/></picture>
+                <section className={classes.detail}>
                     <p>Descripción: {description}</p>
-                    <p>Precio: {price}</p>
+                    <p>Precio: ${price}</p>
                 </section>           
                 <footer>
                     {
-                        quantity === 0 ? (<ItemCount onAdd={handleOnAdd} stock={stock}/>) : (<Link className={ classes.button} to='/cart'>Finalizar compra</Link>)
+                        quantity === 0 ? (<ItemCount onAdd={handleOnAdd} stock={stock}/>) : (<Link style={{ margin: 10}} className={ classes.button} to='/cart'>Finalizar compra</Link>)
                     }
                 </footer>
              </article>
+             <button onClick={() => setInputType(inputType === 'input' ? 'button' : 'input')} style={{ margin: 10}}>Cambiar contador</button>
         </div>
     )
 }
