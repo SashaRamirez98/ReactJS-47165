@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useCart } from '../../context/cartContext'
 import { Link } from 'react-router-dom'
+import { useNotification } from "../../Notification/NotificationServices"
 import classes from '../Item/Item.module.css'
 
 const InputCount = ({ onAdd, stock, initial }) => {
@@ -50,13 +51,14 @@ const ItemDetail = ({ id, name, category, img, price, stock, description }) => {
     const ItemCount = inputType === 'input' ? InputCount : ButtonCount
 
     const { addItem } = useCart()
+    const { setNotification } = useNotification()
 
     const handleOnAdd = (quantity) => {
         const objProductToAdd = {
             id, name, price, quantity
         }
         addItem(objProductToAdd)
-        // setNotification('error', `Se agregaron correctamente ${quantity} ${name} al carrito`)
+        setNotification('error', `Se agregaron correctamente ${quantity} ${name} al carrito`)
 
         setQuantity(quantity)
     }
