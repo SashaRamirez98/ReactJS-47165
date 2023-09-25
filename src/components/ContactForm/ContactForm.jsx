@@ -1,82 +1,54 @@
 import { useState } from "react"
 import classes from './ContactForm.module.css'
+import { useForm } from 'react-hook-form'
 
 const ContactForm = ({ createOrder }) => {
+    const{ register, formState:{errors}} =useForm()
  
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
-    // const [errors, setErrors] = useState({});
-
-    // const validateForm = () => {
-    //     const errors = {};
     
-    //     if (!name.trim()) {
-    //       errors.name = 'El nombre es requerido';
-    //     }
-    
-    //     if (!phone.trim()) {
-    //       errors.phone = 'El número de celular es requerido';
-    //     } else if (!/^\d+$/.test(phone)) {
-    //       errors.phone = 'El número de celular debe contener solo números';
-    //     }
-    
-    //     if (!email.trim()) {
-    //       errors.email = 'El correo electrónico es requerido';
-    //     } else if (!/\S+@\S+\.\S+/.test(email)) {
-    //       errors.email = 'El correo electrónico no es válido';
-    //     }
-    
-    //     return errors;
-    //   };
-    
-
        const handleConfirm = (event) => {
         event.preventDefault()
+        }
 
-    //     const validationErrors = validateForm();
-
-    //     if (Object.keys(validationErrors).length === 0) {
-    //       createOrder({ name, phone, email });
-    //       setErrors({}); 
-    //     } else {
-    //       setErrors(validationErrors);
-    //     }
-  }
 
     return(
         <>
-            <h2>Formulario</h2>
+            <h2>Complete el formulario para finalizar su orden.</h2> 
             <form onSubmit={handleConfirm} className={classes.form}>
                 <label className={classes.label}>
                     Nombre
                     <input 
+                    placeholder="Juan Perez"
                     className= {classes.input}
                     type="text"
                     value={name}
                     onChange={({ target }) => setName(target.value)}/>
-                    {/* {errors.name && <span className={classes.error}>{errors.name}</span>} */}
                 </label>
                 <label>
                     Celular
                     <input 
+                    placeholder="11-12345678"
                     className= {classes.input}
-                    type="text"
+                    type="number"
                     value={phone}
-                    onChange={({ target }) => setPhone(target.value)}/>
-                    {/* {errors.phone && <span className={classes.error}>{errors.phone}</span>} */}
+                    onChange={({ target }) => setPhone(target.value)}
+                    required/>
                 </label>
                 <label>
                     Email
                     <input 
+                    placeholder="midireccion@gmail.com"
                     className= {classes.input}
                     type="text"
                     value={email}
-                    onChange={({ target }) => setEmail(target.value)}/>
-                    {/* {errors.email && <span className={classes.error}>{errors.email}</span>} */}
+                    onChange={({ target }) => setEmail(target.value)}
+                    required/>
                 </label>
-            </form>
-            <button onClick={() => createOrder( name, phone, email )}>Generar orden</button>
+                </form>
+            <button onClick={() => createOrder({name, phone, email})}>Generar orden</button>
         </>
     )
 }

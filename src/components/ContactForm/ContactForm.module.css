@@ -10,7 +10,7 @@
     margin-bottom: 5px;
   }
   
-.input[type="text"] {
+.input{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -25,22 +25,11 @@
   }
   
 
-.input[type="text"]:hover {
-    border-color: #007bff;
+.input:hover {
+    border-color: white;
   }
   
-.input[type="text"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-
-.error {
-    color: #ff0000;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-
-.input.error {
-    border-color: #ff0000;
+.input:focus {
+    border-color: white;
+    box-shadow: 1 1 5px white(0, 123, 255, 0.5);
   }

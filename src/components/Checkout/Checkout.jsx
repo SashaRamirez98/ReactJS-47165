@@ -9,15 +9,14 @@ const Checkout = () => {
     const [orderId, setOrderId] = useState('')
     const { cart, total, clearCart } = useCart()
 
-    const createOrder = async ({ name, phone, email}) => {
-        try {
-            setLoading(true)
 
+    const createOrder = async ({ name, phone, email }) => {
+        setLoading(true)
+
+        try {
             const objOrder = {
                 buyer: {
-                    name: name,
-                    phone: phone,
-                    email: email
+                    name, phone, email
                 },
                 items: cart,
                 total: total
@@ -27,7 +26,6 @@ const Checkout = () => {
             const outOfStock = []
     
             const ids = cart.map(prod => prod.id)
-            console.log(ids)
     
             const productsRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
     
@@ -55,12 +53,11 @@ const Checkout = () => {
                 batch.commit()
                 clearCart()
                 setOrderId(orderId)
-                console.log('el numero de orden es: ' + orderId)
             } else {
                 console.error('Hay productos fuera de stock...')
             }
         } catch (error) {
-            console.log('Ocurrio un error al obtener datos: ' + error.message)
+            console.error('Ocurrio un error al obtener datos: ' + error.message)
         } finally {
             setLoading(false)
         }
@@ -70,12 +67,14 @@ const Checkout = () => {
         return <h1>Se esta generando su orden...</h1>
     }
 
+    if (orderId){
+        return <h1>El id de su compra es: {orderId}</h1>
+    }
 
     return(
         <>
          <h1>Checkout</h1>
          <ContactForm createOrder={createOrder} />
-         {orderId && <h1>El id de su compra es: {orderId}</h1>}
         </>
     )
 }

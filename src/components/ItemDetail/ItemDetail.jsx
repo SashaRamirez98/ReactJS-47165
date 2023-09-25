@@ -44,7 +44,7 @@ const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
     )
 }
 
-const ItemDetail = ({ id, name, category, img, price, stock, description }) => {
+const ItemDetail = ({ id, name, img, price, stock, description }) => {
     const [inputType, setInputType] = useState('button')
     const [quantity, setQuantity] = useState(0)
 
