@@ -9,18 +9,18 @@ const Checkout = () => {
     const [orderId, setOrderId] = useState('')
     const { cart, total, clearCart } = useCart()
 
-    const createOrder = async ( name, phone, email ) => {
+    const createOrder = async ({ name, phone, email}) => {
         try {
             setLoading(true)
 
             const objOrder = {
                 buyer: {
-                    name,
-                    phone,
-                    email
+                    name: name,
+                    phone: phone,
+                    email: email
                 },
                 items: cart,
-                total
+                total: total
             }
             
             const batch = writeBatch(db)
@@ -55,6 +55,7 @@ const Checkout = () => {
                 batch.commit()
                 clearCart()
                 setOrderId(orderId)
+                console.log('el numero de orden es: ' + orderId)
             } else {
                 console.error('Hay productos fuera de stock...')
             }
@@ -66,16 +67,16 @@ const Checkout = () => {
     }
 
     if(loading) {
-        return <span className="loader"></span>
+        return <h1>Se esta generando su orden...</h1>
     }
+
 
     return(
         <>
          <h1>Checkout</h1>
          <ContactForm createOrder={createOrder} />
-         {orderId && <h1>El id de su compra es: <span style={{ fontWeight: 500 }}>{orderId}</span> </h1>}
+         {orderId && <h1>El id de su compra es: {orderId}</h1>}
         </>
     )
 }
-
 export default Checkout
