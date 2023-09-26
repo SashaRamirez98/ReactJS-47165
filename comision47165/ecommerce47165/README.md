@@ -4,10 +4,10 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 # Running Locally
 
-$ git clone https://github.com/SashaRamirez98/ReactJS-47165.git
-$ cd ecommerce47165
-$ npm install
-$ npm start
+- $ git clone https://github.com/SashaRamirez98/ReactJS-47165.git
+- $ cd ecommerce47165
+- $ npm install
+- $ npm start
 
 # Built Using
 
