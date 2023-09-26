@@ -1,15 +1,18 @@
 import classes from "./Item.module.css"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Item = ( { id, name, img, price} ) => {
-    const navigate = useNavigate()
+    const handleClick = (e) => {
+        e.stopPropagation()
+    }
+
 
     return (
-        <div>
-            <h3>{name}</h3>
-            <img className= {classes.img} src={img} />
-            <p>Precio: $ {price}</p>
-            <button onClick={() => navigate(`/detail/${id}`)}>Ver detalle</button>
+        <div className={classes.card} onClick={handleClick}>
+            <h3 className={classes.font}>{name}</h3>
+            <img className= { classes.img } src={img}/>
+            <p>Precio: ${price}</p>
+            <Link className={ classes.button } to={`/detail/${id}`} >Ver Detalle</Link>
         </div>
     )
 }
